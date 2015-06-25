@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- The core React library -->
+	<script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+	<!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
+	<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script type="text/jsx">
+		/** @jsx React.DOM */
+		var App = React.createClass({
+
+			mixins: [
+				React.addons.LinkedStateMixin
+			],
+
+			getInitialState: function getInitialState()
+			{
+				return {
+					payment: 0,
+					payment2: 0
+				};
+			},
+
+			render: function render() {
+
+				var total = parseInt(this.state.payment, 10) + parseInt(this.state.payment2, 10);
+
+				return (
+					<div>
+						<Payment valueLink={this.linkState('payment')} />
+						<Payment valueLink={this.linkState('payment2')} />
+						{total}
+					</div>
+				);
+			}
+
+		});
+
+		var Payment = React.createClass({
+
+			render: function render() {
+
+				return (
+					<input type="text" {...this.props}/>
+				);
+			}
+
+		});
+
+		var reactComponent = React.render(
+			<App />,
+			document.getElementById('app')
+		);
+
+	</script>
+</body>
+</html>
+

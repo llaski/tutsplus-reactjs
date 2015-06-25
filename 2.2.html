@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- The core React library -->
+	<script src="https://fb.me/react-0.13.3.js"></script>
+	<!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
+	<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+</head>
+<body>
+
+	<div id="jsx"></div>
+
+	<div id="dom"></div>
+
+	<script type="text/jsx">
+		/** @jsx React.DOM */
+		var MessageBoxJSX = React.createClass({
+
+			render: function render() {
+				return (
+					<div className="container">
+						<h1>Hello World</h1>
+						<SubMessage />
+					</div>
+				);
+			}
+
+		});
+
+		var MessageBoxDom = React.createClass({
+
+			render: function render() {
+				return React.DOM.div({ className: 'container' },
+					React.DOM.h1(null, 'Hello world'),
+					React.createElement(SubMessage, null)
+				);
+			}
+
+		});
+
+		var SubMessage = React.createClass({
+
+			render: function() {
+				return (
+					<small>Its good to see you</small>
+				);
+			}
+
+		});
+
+		var reactComponentJSX = React.render(
+			<MessageBoxJSX />,
+			document.getElementById('jsx')
+		);
+
+		var reactComponentDom = React.render(
+			React.createElement(MessageBoxDom, null),
+			document.getElementById('dom')
+		);
+	</script>
+</body>
+</html>
+

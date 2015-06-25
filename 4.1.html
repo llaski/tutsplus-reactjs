@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- The core React library -->
+	<script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+	<!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
+	<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script type="text/jsx">
+		/** @jsx React.DOM */
+		var Dashboard = React.createClass({
+
+			loadData: function loadData() {
+				return $.get('https://gsr-demo.firebaseio-demo.com/' + this.props.url + '/.json');
+			},
+
+			componentWillMount: function componentWillMount() {
+				debugger;
+			},
+
+			componentDidMount: function componentDidMount() {
+				debugger;
+				this.loadData().then(function(data) {
+					this.setState({
+						metric: data
+					});
+				}.bind(this));
+			},
+
+			getInitialState: function getInitialState()
+			{
+				return {
+					metric: 0
+				};
+			},
+
+			render: function render() {
+				return (
+					<div className="jumbotron">
+						<h2 className="text-center">{this.state.metric}</h2>
+					</div>
+				);
+			}
+
+		});
+
+		var reactComponent = React.render(
+			<Dashboard url="metric" />,
+			document.getElementById('app')
+		);
+
+	</script>
+</body>
+</html>
+
