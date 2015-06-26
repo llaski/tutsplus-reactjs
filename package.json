@@ -1,0 +1,36 @@
+{
+  "name": "tutsplus-reactjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^2.2.7",
+    "lodash": "^3.9.3",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^0.3.2",
+    "gulp-react": "^3.0.1",
+    "react-tools": "^0.13.3",
+    "reactify": "^1.1.1"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/browserify -t reactify src/app.5.2.js > build/app.5.2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/llaski/tutsplus-reactjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llaski/tutsplus-reactjs/issues"
+  },
+  "homepage": "https://github.com/llaski/tutsplus-reactjs"
+}
